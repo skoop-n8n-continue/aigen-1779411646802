@@ -1,0 +1,79 @@
+{
+  "app_id": "burger-menu-001",
+  "document_version": 1,
+  "sections": {
+    "app_settings": {
+      "primary_color": { "type": "color", "label": "Primary Color", "value": "#D32F2F" },
+      "secondary_color": { "type": "color", "label": "Secondary Color", "value": "#FFC107" },
+      "background_color": { "type": "color", "label": "Background Color", "value": "#1A1A1A" },
+      "text_color": { "type": "color", "label": "Text Color", "value": "#FFFFFF" },
+      "current_mode": { "type": "enum", "label": "Current Display Mode", "value": "standard", "meta": { "options": ["standard", "lunch", "late-night"] } }
+    },
+    "storefront": {
+      "store_name": { "type": "text", "label": "Store Name", "value": "Smash & Sizzle" }
+    },
+    "categories": {
+      "type": "collection",
+      "label": "Categories",
+      "item_schema": {
+        "id": { "type": "text", "label": "ID" },
+        "name": { "type": "text", "label": "Category Name" }
+      },
+      "value": [
+        { "id": "cat_1a2b3c", "name": "Specials" },
+        { "id": "cat_4d5e6f", "name": "Combos" },
+        { "id": "cat_7g8h9i", "name": "Drinks & Sides" }
+      ]
+    },
+    "products": {
+      "type": "collection",
+      "label": "Menu Items",
+      "item_schema": {
+        "id": { "type": "text", "label": "ID" },
+        "name": { "type": "text", "label": "Item Name" },
+        "description": { "type": "textarea", "label": "Description" },
+        "price": { "type": "number", "label": "Price", "meta": { "format": "currency" } },
+        "category": { "type": "linked", "label": "Category", "meta": { "collection": "categories", "display_field": "name" } },
+        "thumbnail": {
+          "type": "file",
+          "label": "Thumbnail",
+          "meta": { "accepted_formats": ["jpg", "png", "webp"], "path": "assets/products/" }
+        },
+        "show_lunch": { "type": "boolean", "label": "Show during Lunch Rush" },
+        "show_late": { "type": "boolean", "label": "Show during Late Night" }
+      },
+      "value": [
+        {
+          "id": "prod_a1b2c3",
+          "name": "The Double Sizzle",
+          "description": "Two smashed patties, bacon, cheddar, special sauce.",
+          "price": 12.99,
+          "category": "cat_1a2b3c",
+          "thumbnail": "assets/burger_special-1779411771902.png",
+          "show_lunch": true,
+          "show_late": true
+        },
+        {
+          "id": "prod_d4e5f6",
+          "name": "Lunch Rush Combo",
+          "description": "Any single burger, fries, and a fountain drink.",
+          "price": 14.50,
+          "category": "cat_4d5e6f",
+          "thumbnail": "assets/fries_combo-1779411784621.png",
+          "show_lunch": true,
+          "show_late": false
+        },
+        {
+          "id": "prod_g7h8i9",
+          "name": "Classic Vanilla Shake",
+          "description": "Real ice cream, whipped cream, cherry.",
+          "price": 5.99,
+          "category": "cat_7g8h9i",
+          "thumbnail": "assets/milkshake-1779411798401.png",
+          "show_lunch": true,
+          "show_late": true
+        }
+      ]
+    }
+  }
+}
